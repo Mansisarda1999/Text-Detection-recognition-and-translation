@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+     <h1>Select a file to upload</h1>
+     <p>
+    	{% with messages = get_flashed_messages() %}
+    	  {% if messages %}
+    		<ul>
+    		{% for message in messages %}
+    		  <li>{{ message }}</li>
+    		{% endfor %}
+    		</ul>
+    	  {% endif %}
+        {% endwith %}
+     </p>
+    {% if filename %}
+    	<div>
+    		<img class="mb-4" src="New folder (2)/uploads/{{filename}}" alt="" width="72" height="72">
+    	</div>
+    {% endif %}
+    <form method="post" action="/" enctype="multipart/form-data">
+        <dl>
+    		<p>
+    			<input type="file" name="file" autocomplete="off" required>
+    		</p>
+        </dl>
+        <p>
+            	<button type="submit" class="btn btn-primary btn-block btn-large">Submit</button>
+        	</p>
+    </form>
+	<h2>Predict Text Analysis</h2>
+        
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post" enctype="multipart/form-data">
+        <input type="file" name="file" autocomplete="off" required>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>        
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
