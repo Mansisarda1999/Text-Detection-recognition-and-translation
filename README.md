@@ -5,5 +5,5 @@ Text Recognition: After text detection comes text recognition where the detected
 
 Text Translation: Here in my blog, the English text recognized is then translated to Hindi language.
 
-In order to perform the above tasks different deep learning models are used at each stage which we will discuss later in this blog.
+In order to perform the above tasks different deep learning models are used at each stage which is discussed in my blog.
 https://medium.com/analytics-vidhya/scene-text-detection-recognition-and-translation-ad20c31e869e
